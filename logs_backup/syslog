@@ -1060,3 +1060,16 @@ Mar 13 10:40:07 localhost systemd[1]: session-48.scope: Deactivated successfully
 Mar 13 10:40:07 localhost systemd[1]: sysstat-collect.service: Deactivated successfully.
 Mar 13 10:40:07 localhost systemd[1]: Finished system activity accounting tool.
 Mar 13 10:40:21 localhost systemd[1]: Started Session 49 of User root.
+Mar 13 10:40:39 localhost systemd[1]: session-49.scope: Deactivated successfully.
+Mar 13 10:45:01 localhost CRON[2998]: (root) CMD (command -v debian-sa1 > /dev/null && debian-sa1 1 1)
+Mar 13 10:45:33 localhost systemd[1]: Started Session 51 of User root.
+Mar 13 10:45:34 localhost systemd[1]: session-51.scope: Deactivated successfully.
+Mar 13 10:45:36 localhost systemd[1]: Started Session 52 of User root.
+Mar 13 10:45:38 localhost systemd[1]: session-52.scope: Deactivated successfully.
+Mar 13 10:45:53 localhost systemd[1]: Started Session 53 of User root.
+Mar 13 10:46:20 localhost systemd[1]: session-53.scope: Deactivated successfully.
+Mar 13 10:46:56 localhost systemd[1]: Started Session 54 of User root.
+Mar 13 10:47:13 localhost systemd[1]: session-54.scope: Deactivated successfully.
+Mar 13 10:48:14 localhost systemd[1]: Started Session 55 of User root.
+Mar 13 10:48:41 localhost systemd[1]: session-55.scope: Deactivated successfully.
+Mar 13 10:49:22 localhost systemd[1]: Started Session 56 of User root.
