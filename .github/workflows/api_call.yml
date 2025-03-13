@@ -2,7 +2,7 @@ name: API Call
 
 on:
   schedule:
-    - cron: '*/10 * * * *' # Cada 10 minutos
+    - cron: '*/1 * * * *' # Cada 1 minutos
   workflow_dispatch:
 
 jobs:
