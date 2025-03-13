@@ -2,7 +2,7 @@ name: API Call
 
 on:
   schedule:
-    - cron: '*/1 * * * *' # Cada 1 minutos
+    - cron: '*/1 * * * *' # Cada 10 minutos
   workflow_dispatch:
 
 jobs:
@@ -20,8 +20,8 @@ jobs:
 
       - name: Commit results
         run: |
-           git config --global user.name "idaira"
+          git config --global user.name "idaira"
           git config --global user.email "idairaconejillo@gmail.com"
           git add api_responses/
-          git commit -m "Added API response"
-          git push
+          git commit -m "Added API response" || echo "No changes to commit"
+          git push || echo "Nothing to push"
