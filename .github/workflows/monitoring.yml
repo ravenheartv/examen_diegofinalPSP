@@ -1,0 +1,28 @@
+name: Monitor Web Page
+
+on:
+  schedule:
+    - cron: '*/1 * * * *' # Cada 1 minutos
+  workflow_dispatch:
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Monitor webpage
+        run: |
+          STATUS_CODE=$(curl -o /dev/null -s -w "%{http_code}" https://store.mschf.com/?_gl=1*5tk0aj*_gcl_au*ODczMjU5NjUyLjE3NDE4NTQzOTQ.*_ga*OTQ1Nzg5NTU5LjE3NDE4NTQzOTQ.*_ga_S0HD1HNF7D*MTc0MTg1NDM5NC4xLjAuMTc0MTg1NDM5NS41OS4wLjEzNTM1MjU5MTg.)
+          TIMESTAMP=$(date "+%Y-%m-%d %H:%M:%S")
+          echo "$TIMESTAMP - Status Code: $STATUS_CODE" >> monitoring.log
+
+      - name: Commit results
+        run: |
+          git config --global user.name "idaira"
+          git config --global user.email "idairaconejillo@gmail.com"
+          git add monitoring.log
+          git commit -m "Added monitoring result"
+          git push

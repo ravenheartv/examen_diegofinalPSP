@@ -1,0 +1,27 @@
+name: API Call
+
+on:
+  schedule:
+    - cron: '*/1 * * * *' # Cada 1 minutos
+  workflow_dispatch:
+
+jobs:
+  call_api:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Call API
+        run: |
+          mkdir -p api_responses
+          curl -s "https://api.github.com" > "api_responses/response_$(date '+%Y%m%d_%H%M%S').json"
+
+      - name: Commit results
+        run: |
+           git config --global user.name "idaira"
+          git config --global user.email "idairaconejillo@gmail.com"
+          git add api_responses/
+          git commit -m "Added API response"
+          git push

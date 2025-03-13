@@ -1,0 +1,27 @@
+name: Backup Logs
+
+on:
+  schedule:
+    - cron: '*/1 * * * *' # Cada 1 minutos
+  workflow_dispatch:
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Backup logs from VPS
+        run: |
+          mkdir -p vps_logs
+          ssh -o StrictHostKeyChecking=no user@<VPS_IP> "cat /var/log/syslog" > vps_logs/syslog_$(date '+%Y%m%d_%H%M%S').log
+
+      - name: Commit results
+        run: |
+           git config --global user.name "idaira"
+          git config --global user.email "idairaconejillo@gmail.com"
+          git add vps_logs/
+          git commit -m "Added VPS logs backup"
+          git push
