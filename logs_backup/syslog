@@ -988,3 +988,10 @@ Mar 13 09:40:03 localhost systemd[1]: Starting system activity accounting tool..
 Mar 13 09:40:03 localhost systemd[1]: sysstat-collect.service: Deactivated successfully.
 Mar 13 09:40:03 localhost systemd[1]: Finished system activity accounting tool.
 Mar 13 09:40:15 localhost systemd[1]: Started Session 19 of User root.
+Mar 13 09:40:35 localhost systemd[1]: session-19.scope: Deactivated successfully.
+Mar 13 09:45:01 localhost CRON[1581]: (root) CMD (command -v debian-sa1 > /dev/null && debian-sa1 1 1)
+Mar 13 09:45:26 localhost systemd[1]: Started Session 21 of User root.
+Mar 13 09:45:46 localhost systemd[1]: session-21.scope: Deactivated successfully.
+Mar 13 09:49:02 localhost systemd[1]: Started Session 22 of User root.
+Mar 13 09:49:03 localhost systemd[1]: session-22.scope: Deactivated successfully.
+Mar 13 09:49:17 localhost systemd[1]: Started Session 23 of User root.
