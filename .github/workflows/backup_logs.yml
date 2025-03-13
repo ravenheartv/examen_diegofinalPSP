@@ -2,7 +2,7 @@ name: Backup Logs
 
 on:
   schedule:
-    - cron: '*/5 * * * *' # Cada 1 minutos
+    - cron: '*/5 * * * *' # T5min
   workflow_dispatch:
 
 jobs:
@@ -13,19 +13,28 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Check if logs exist
+        run: |
+          if [ -d "/var/log/" ]; then
+            echo "Log directory exists"
+          else
+            echo "Log directory not found"
+            exit 1
+          fi
+
       - name: Create backup directory
-        run: mkdir -p backups
+        run: sudo mkdir -p backups
 
       - name: Copy logs
         run: |
-          sudo cp -r /var/log/* backups/
-          tar -czf backups/logs_$(date '+%Y%m%d_%H%M%S').tar.gz backups/*
-          rm -rf backups/*.log
+          sudo cp -r /var/log/* backups/ || echo "No logs to copy"
+          sudo tar -czf backups/logs_$(date '+%Y%m%d_%H%M%S').tar.gz backups/*
+          sudo rm -rf backups/*.log || echo "No logs to delete"
 
       - name: Commit backup
         run: |
-          git config --global user.name "idaira"
-          git config --global user.email "idairaconejillo@gmail.com"
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
           git add backups/
-          git commit -m "Backup logs"
+          git commit -m "Backup logs" || echo "No changes to commit"
           git push || echo "Nothing to push"
