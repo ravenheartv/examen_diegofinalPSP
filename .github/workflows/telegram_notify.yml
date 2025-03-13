@@ -19,4 +19,4 @@ jobs:
           JOB_NAME: ${{ github.event.workflow_run.name }}
         run: |
           MESSAGE="✅ Workflow: $JOB_NAME\n📅 Status: $JOB_STATUS\n🔗 Repo: ${{ github.repository }}"
-          curl -s -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage" -d "chat_id=$TELEGRAM_CHAT_ID" -d "text=$MESSAGE"
+          curl -s -X POST "https://t.me/examen_PSPidaira" -d "chat_id=$TELEGRAM_CHAT_ID" -d "text=$MESSAGE"
