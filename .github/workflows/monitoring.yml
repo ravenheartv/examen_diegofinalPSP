@@ -2,7 +2,7 @@ name: Monitor Web Page
 
 on:
   schedule:
-    - cron: '*/1 * * * *' # Cada 1 minutos
+    - cron: '*/5 * * * *' # Cada 1 minutos
   workflow_dispatch:
 
 jobs:
